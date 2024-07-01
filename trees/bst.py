@@ -23,11 +23,13 @@ class BinarySearchTree:
                     temp.left = new_node
                     return True
                 temp = temp.left
-            else:
+            elif new_node.value > temp.value:
                 if temp.right is None:
                     temp.right = new_node
                     return True
                 temp = temp.right
+            else:
+                return False
 
     def contains(self, value):
         temp = self.root
