@@ -29,6 +29,19 @@ class BinarySearchTree:
                     return True
                 temp = temp.right
 
+    def contains(self, value):
+        temp = self.root
+
+        while temp is not None:
+            if value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+            else:
+                return True
+
+        return False
+
 
 
 my_tree = BinarySearchTree()
@@ -61,3 +74,17 @@ print('Root->Right:', my_tree.root.right.value)
     Root->Right: 3
 
 """
+
+long_tree = BinarySearchTree()
+
+long_tree.insert(47)
+long_tree.insert(21)
+long_tree.insert(76)
+long_tree.insert(18)
+long_tree.insert(27)
+long_tree.insert(52)
+long_tree.insert(82)
+long_tree.insert(38)
+
+print(long_tree.contains(27))
+print(long_tree.contains(17))
