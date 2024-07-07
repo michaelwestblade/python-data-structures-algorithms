@@ -23,4 +23,20 @@ def merge(list1: List, list2: List) -> List:
 
     return combined
 
+def merge_sort(list_to_sort: List) -> List:
+    # if we have only one item, return (BASE CASE)
+    if len(list_to_sort) <= 1:
+        return list_to_sort
+    mid_index = len(list_to_sort) // 2
+    # create list from 0 up to but not including mid_index
+    # and call merge_sort recursively
+    left = merge_sort(list_to_sort[:mid_index])
+    # create list from mid_index to the end
+    # and call merge_sort recursively
+    right = merge_sort(list_to_sort[mid_index:])
+
+    return merge(left, right)
+
 print( merge( [1, 2, 7, 8], [3, 4, 5, 6] ) )
+
+print(merge_sort([ 4, 2, 6, 5, 1, 3 ]))
