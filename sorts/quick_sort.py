@@ -26,17 +26,20 @@ def pivot(list_to_check: list, pivot_index: int, end_index: int) -> int:
 
     return swap_index
 
-def quick_sort(list_to_sort: list, left: int, right: int) -> list:
+def quick_sort_helper(list_to_sort: list, left: int, right: int) -> list:
     if left < right:
         pivot_index = pivot(list_to_sort, left, right)
-        quick_sort(list_to_sort, left, pivot_index - 1)
-        quick_sort(list_to_sort, pivot_index + 1, right)
+        quick_sort_helper(list_to_sort, left, pivot_index - 1)
+        quick_sort_helper(list_to_sort, pivot_index + 1, right)
 
     return list_to_sort
+
+def quick_sort(list_to_sort: list) -> list:
+    return quick_sort_helper(list_to_sort, 0, len(list_to_sort) - 1)
 
 
 list_to_sort = [4, 6, 1, 7, 3, 2, 5]
 print(pivot(list_to_sort, 0, 6))
 print(list_to_sort)
 
-print(quick_sort(list_to_sort, 0, len(list_to_sort) - 1))
+print(quick_sort(list_to_sort))
